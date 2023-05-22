@@ -1,10 +1,3 @@
-'''
-作者：yowayimono
-日期：2023-05-19 20:21:29
-最后编辑者：yowayimono
-最后编辑时间：2023-05-20 13:52:43
-描述：无
-'''
 import sys
 import subprocess
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QFileDialog, QLineEdit, QComboBox
@@ -15,49 +8,22 @@ class VideoConverterApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # 设置窗口属性
+        # 设置窗口属性和背景颜色
         self.setWindowTitle("视频工具")
         self.setGeometry(100, 100, 500, 300)
+        self.setStyleSheet("background-color: pink;")
 
         # 创建标签
         self.input_label = QLabel("视频文件：", self)
         self.input_label.move(20, 20)
         self.input_label.setFont(QFont("Arial", 8))
-
-        self.output_label = QLabel("保存路径：", self)
-        self.output_label.move(20, 60)
-        self.output_label.setFont(QFont("Arial", 8))
-
-        self.output_name_label = QLabel("文件名：", self)
-        self.output_name_label.move(20, 100)
-        self.output_name_label.setFont(QFont("Arial", 8))
-
-        # 创建用于输出文件名的文本框
-        self.output_name_textbox = QLineEdit(self)
-        self.output_name_textbox.move(90, 100)
-
-        # 创建保存按钮
-        self.save_button = QPushButton("保存", self)
-        self.save_button.move(300, 100)
-        self.save_button.setFont(QFont("Arial", 8, QFont.Bold))
-        self.save_button.clicked.connect(self.save_output_file)
+        self.input_label.setStyleSheet("border: 2px solid pink;")
 
         # 创建用于选择输入文件和输出路径的按钮
         self.input_button = QPushButton("视频文件", self)
         self.input_button.move(300, 20)
         self.input_button.setFont(QFont("Arial", 8))
-        self.input_button.clicked.connect(self.select_input_file)
-
-        self.output_button = QPushButton("输出路径", self)
-        self.output_button.move(300, 60)
-        self.output_button.setFont(QFont("Arial", 8))
-        self.output_button.clicked.connect(self.select_output_path)
-
-        # 创建转换按钮
-        self.convert_button = QPushButton("转换", self)
-        self.convert_button.move(300, 140)
-        self.convert_button.setFont(QFont("Arial", 8, QFont.Bold))
-        self.convert_button.clicked.connect(self.convert_video)
+        self.input_button.setStyleSheet("border: 2px solid pink;")
 
         # 创建用于选择输出格式的组合框
         self.output_format_combobox = QComboBox(self)
@@ -66,6 +32,41 @@ class VideoConverterApp(QMainWindow):
         self.output_format_combobox.addItem("avi")
         self.output_format_combobox.addItem("flv")
         self.output_format_combobox.move(130, 60)
+        self.output_format_combobox.setStyleSheet("border: 2px solid pink;")
+
+        # 创建保存按钮
+        self.save_button = QPushButton("保存", self)
+        self.save_button.move(300, 100)
+        self.save_button.setFont(QFont("Arial", 8, QFont.Bold))
+        self.save_button.setStyleSheet("border: 2px solid pink;")
+
+        # 创建转换按钮
+        self.convert_button = QPushButton("转换", self)
+        self.convert_button.move(300, 140)
+        self.convert_button.setFont(QFont("Arial", 8, QFont.Bold))
+        self.convert_button.setStyleSheet("border: 2px solid pink;")
+
+        # 创建用于输出文件名的文本框
+        self.output_name_textbox = QLineEdit(self)
+        self.output_name_textbox.move(90, 100)
+        self.output_name_textbox.setStyleSheet("border: 2px solid pink;")
+
+        # 创建标签
+        self.output_label = QLabel("保存路径：", self)
+        self.output_label.move(20, 60)
+        self.output_label.setFont(QFont("Arial", 8))
+        self.output_label.setStyleSheet("border: 2px solid pink;")
+
+        self.output_name_label = QLabel("文件名：", self)
+        self.output_name_label.move(20, 100)
+        self.output_name_label.setFont(QFont("Arial", 8))
+        self.output_name_label.setStyleSheet("border: 2px solid pink;")
+
+        # 创建用于选择输出路径的按钮
+        self.output_button = QPushButton("输出路径", self)
+        self.output_button.move(300, 60)
+        self.output_button.setFont(QFont("Arial", 8))
+        self.output_button.setStyleSheet("border: 2px solid pink;")
 
         # 初始化变量
         self.input_file = ""
